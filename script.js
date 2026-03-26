@@ -15,6 +15,8 @@ if (window.lucide) {
 }
 
 const body = document.body;
+const nav = document.querySelector('nav');
+const navToggle = document.querySelector('#navToggle');
 const demoModal = document.querySelector('#demoModal');
 const privacyModal = document.querySelector('#privacyModal');
 const termsModal = document.querySelector('#termsModal');
@@ -25,6 +27,7 @@ let pendingDemoSubmission = false;
 
 const openModal = (modal) => {
   if (!modal) return;
+  closeNavMenu();
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
   body.classList.add('modal-open');
@@ -48,6 +51,20 @@ const showToast = () => {
   successToast.classList.add('show');
   window.setTimeout(() => successToast.classList.remove('show'), 3200);
 };
+
+const closeNavMenu = () => {
+  if (!nav || !navToggle) return;
+  nav.classList.remove('menu-open');
+  navToggle.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+};
+
+navToggle?.addEventListener('click', () => {
+  const isOpen = nav.classList.contains('menu-open');
+  nav.classList.toggle('menu-open', !isOpen);
+  navToggle.classList.toggle('open', !isOpen);
+  navToggle.setAttribute('aria-expanded', String(!isOpen));
+});
 
 document.querySelectorAll('.feature-slider').forEach((slider) => {
   const slides = Array.from(slider.querySelectorAll('.slide-card'));
@@ -95,6 +112,7 @@ document.querySelectorAll('.modal-backdrop').forEach((modal) => {
 
 window.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {
+    closeNavMenu();
     closeAllModals();
   }
 });
@@ -111,8 +129,19 @@ submitFrame?.addEventListener('load', () => {
   showToast();
 });
 
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768) {
+    closeNavMenu();
+  }
+});
+
+document.querySelectorAll('.nav-links a, .nav-cta .open-demo-modal').forEach((item) => {
+  item.addEventListener('click', () => {
+    closeNavMenu();
+  });
+});
+
 // Nav background fade on scroll
-const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 40) {
     nav.style.boxShadow = '0 2px 20px rgba(13,15,20,0.08)';
