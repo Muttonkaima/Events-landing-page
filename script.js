@@ -10,6 +10,10 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 reveals.forEach(el => observer.observe(el));
 
+if (window.lucide) {
+  window.lucide.createIcons();
+}
+
 // Nav background fade on scroll
 const nav = document.querySelector('nav');
 window.addEventListener('scroll', () => {

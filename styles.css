@@ -261,7 +261,11 @@ nav {
   background: var(--cream-warm);
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  font-size: 11px;
+}
+.trust-icon svg {
+  width: 11px;
+  height: 11px;
+  stroke-width: 2.2;
 }
 .trust-divider { width: 1px; height: 16px; background: var(--border); }
 
@@ -378,8 +382,12 @@ section { padding: 100px 5vw; }
   width: 48px; height: 48px;
   border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem;
   margin-bottom: 20px;
+}
+.platform-card-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2;
 }
 .platform-card h3 {
   font-family: 'Playfair Display', serif;
@@ -444,6 +452,11 @@ section { padding: 100px 5vw; }
   text-transform: uppercase;
   margin-bottom: 16px;
   width: fit-content;
+}
+.feature-badge svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.2;
 }
 .feature-title {
   font-family: 'Playfair Display', serif;
@@ -813,8 +826,12 @@ section { padding: 100px 5vw; }
   width: 44px; height: 44px;
   border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 1.3rem;
   margin-bottom: 18px;
+}
+.feat-card-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2.1;
 }
 .feat-card h3 {
   font-family: 'Playfair Display', serif;
@@ -861,7 +878,12 @@ section { padding: 100px 5vw; }
 .testimonial-stars {
   display: flex; gap: 3px; margin-bottom: 18px;
   color: var(--gold);
-  font-size: 0.9rem;
+}
+.testimonial-stars svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  stroke: currentColor;
 }
 .testimonial-quote {
   font-size: 0.95rem;
